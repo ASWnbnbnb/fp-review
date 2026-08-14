@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>FP · 每日复盘 · 云端快照</title>
 <style>
   :root {
@@ -279,6 +282,13 @@
     font-size: 13px;
   }
 
+  .reflection-content.log-content {
+    height: auto;
+    max-height: 420px;
+    border-color: rgba(16,185,129,0.35);
+    background: rgba(16,185,129,0.06);
+  }
+
   .cal-overlay {
     position: absolute;
     top: 52px;
@@ -354,6 +364,16 @@
     bottom: 3px;
   }
   .cal-grid .day.selected.has-review::after { background: white; }
+  .cal-grid .day.has-log::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+    left: calc(50% + 6px);
+  }
+  .cal-grid .day.has-review.has-log::after { left: calc(50% - 8px); }
 
   .cal-popup-footer {
     margin-top: 10px;
@@ -472,7 +492,7 @@
     <span class="topbar-stat">感想 <span class="val" id="stat-reflections">0</span> 篇</span>
   </div>
   <div class="topbar-right">
-    <span class="badge-snapshot">📸 云端快照 · 2026-08-10</span>
+    <span class="badge-snapshot">📸 云端快照 · 2026-08-14</span>
   </div>
 </div>
 
@@ -503,290 +523,36 @@
   </div>
 </div>
 
-<div class="footer-note">数据快照于 2026-08-10 · 思危的 WorkBuddy 复盘</div>
+<div class="footer-note">数据快照于 2026-08-14 · 思危的 WorkBuddy 复盘</div>
 
 <script>
-// ====== EMBEDDED REVIEW DATA (snapshot 2026-08-10) ======
-var reviewIndex = {
-  "version": "1.0",
-  "created": "2026-08-05",
-  "lastReview": "2026-08-11",
-  "reports": {
-    "2026-08-11": {
-      "topics": [
-        "复盘系统云端同步自动化（15:00）"
-      ],
-      "outputs": [
-        {
-          "type": "system",
-          "title": "复盘系统云端同步：index.json（7 reports + 5 reflections）→ static-snapshot.html"
-        },
-        {
-          "type": "deploy",
-          "title": "deploy-review/index.html 重新部署到 CloudStudio"
-        },
-        {
-          "type": "system",
-          "title": "链接续命成功：本次复用原沙箱 ID，链接未变"
-        }
-      ],
-      "summary": "今日核心工作由 automation-1786074218634 触发的复盘系统云端同步自动化完成。读取 index.json 解析最新 7 个 reports（含 8-09 补盘记录、8-10 完整记录）与 5 个 reflections，替换 static-snapshot.html 中的 reviewIndex 数据块，创建 deploy-review/ 目录并调用 cloudstudio-deploy 完成部署。关键突破：昨日提出的「链接每次部署都会变化」问题在本次首次实现沙箱复用，链接保持 https://c120e9e86334473688be3004e3de5fad.sh2.agentos-app.net 不变。user/conversation_search 在今日窗口无主动对话索引，工作内容均为自动化驱动。",
-      "decisions": [
-        "链接续命方案验证成功：cloudstudio-deploy 在原沙箱已存在时可复用 ID 而非新建，永久链接稳定",
-        "历史数据完整入快照：8-09 补盘与 8-10 完整记录均纳入 reviewIndex 数据块",
-        "自动化每日 15:00 触发节奏维持，作为「链接续命」基础方案"
-      ]
-    },
-    "2026-08-03": {
-      "topics": [
-        "AI 助手人设建立",
-        "WorkBuddy 功能探索",
-        "企业官网开发"
-      ],
-      "outputs": [
-        {
-          "type": "code",
-          "title": "君同云科技企业官网（5页）"
-        },
-        {
-          "type": "code",
-          "title": "juntong-website（Vite+TS）"
-        },
-        {
-          "type": "doc",
-          "title": "SOUL.md / IDENTITY.md / USER.md"
-        }
-      ],
-      "summary": "思危与 WorkBuddy 的初次深度交互。建立了 AI 助手身份（小w），完成了君同云科技企业官网的全栈开发，采用极简黑金风格。",
-      "decisions": [
-        "AI 命名为「小w」，风格干脆干练",
-        "企业官网采用黑金配色",
-        "技术栈 Vite + TypeScript"
-      ]
-    },
-    "2026-08-04": {
-      "topics": [
-        "点菜APP开发"
-      ],
-      "outputs": [
-        {
-          "type": "code",
-          "title": "美味食堂点菜APP（20道菜品）"
-        }
-      ],
-      "summary": "为思危创建了一款餐厅点菜APP，纯前端单文件实现。覆盖选人数、浏览菜单、购物车结算、模拟支付、生成餐号的完整点餐流程。20道菜品7个类别，支持分类筛选和搜索。",
-      "decisions": [
-        "纯前端单HTML文件方案",
-        "模拟支付不做真实对接",
-        "emoji配图轻量视觉方案"
-      ]
-    },
-    "2026-08-05": {
-      "topics": [
-        "AI 文生视频（科比校园反霸凌主题）",
-        "复盘系统需求分析与方案设计",
-        "复盘系统全栈开发"
-      ],
-      "outputs": [
-        {
-          "type": "video",
-          "title": "科比反霸凌视频 V1（13MB）"
-        },
-        {
-          "type": "video",
-          "title": "科比反霸凌视频 V2 修订版（11MB）"
-        },
-        {
-          "type": "video",
-          "title": "科比反霸凌多场景拼接长篇（19MB, 50秒）"
-        },
-        {
-          "type": "code",
-          "title": "复盘仪表盘 dashboard.html"
-        },
-        {
-          "type": "code",
-          "title": "复盘服务器 server.py"
-        },
-        {
-          "type": "code",
-          "title": "复盘 Skill SKILL.md"
-        },
-        {
-          "type": "doc",
-          "title": "历史回溯报告 2026-08-03"
-        },
-        {
-          "type": "doc",
-          "title": "今日复盘报告 2026-08-05"
-        }
-      ],
-      "summary": "上午使用多模态内容生成技能制作科比校园反霸凌主题视频，经历三轮迭代（V1人脸不符→V2审核被拒后软化措辞→V3分场景拼接50秒成片），总结了AI视频平台内容审核规律。下午从零构建WorkBuddy每日复盘系统，包含仪表盘可视化、三层触发机制、自动化每日复盘、历史数据回溯、每日感想输入。系统位于用户级目录确保归档不丢失。",
-      "decisions": [
-        "视频内容审核：含暴力动作的prompt需软化措辞才能通过",
-        "视频长片方案：分场景单独生成 + moviepy拼接",
-        "系统放 ~/.workbuddy/ 确保归档不丢失",
-        "启动补偿机制替代关机执行",
-        "历史复盘通过 conversation_search 回溯",
-        "每日感想仅当天可编辑"
-      ]
-    },
-    "2026-08-06": {
-      "topics": [
-        "QuickMind AI 对话系统开发",
-        "复盘系统维护与 Bug 修复"
-      ],
-      "outputs": [
-        {
-          "type": "code",
-          "title": "QuickMind AI对话系统（index.html + CSS + JS）"
-        },
-        {
-          "type": "code",
-          "title": "QuickMind 代理服务器 server.js"
-        },
-        {
-          "type": "system",
-          "title": "复盘系统 Bug 修复 — JSON 解析 + 重复进程"
-        },
-        {
-          "type": "config",
-          "title": "自动化时间调整 22:00 → 18:00"
-        }
-      ],
-      "summary": "上午开发 QuickMind 轻量 AI 对话系统（纯前端 + Node.js 代理 + DeepSeek API），经历 CORS、socket hang up、fetch API 迁移三轮修复，花费10元购买 API Token。下午维护复盘系统：修复 index.json 中文引号 JSON 解析失败、修复 server.py allow_reuse_address 重复进程冲突、多次调试服务器重启问题。自动化时间调整为每日 18:00。",
-      "decisions": [
-        "Node 代理：fetch API 比 https.request 更稳定",
-        "复盘 JSON：中文引号替换为「」避免解析错误",
-        "复盘服务器：移除 allow_reuse_address 防僵尸进程",
-        "复盘自动化：22:00 → 18:00 配合下班节奏",
-        "DeepSeek API：自费 10 元购买 Token 供 QuickMind 使用"
-      ]
-    },
-    "2026-08-07": {
-      "topics": [
-        "QuickMind AI 对话系统 Bug 修复",
-        "QuickMind 引用功能开发",
-        "QuickMind 云端部署",
-        "复盘系统轻量模式优化",
-        "复盘系统云端部署"
-      ],
-      "outputs": [
-        {
-          "type": "code",
-          "title": "QuickMind 超时/中止机制（server.js + app.js）"
-        },
-        {
-          "type": "code",
-          "title": "QuickMind server.js v4 — 全局错误捕获防崩溃"
-        },
-        {
-          "type": "code",
-          "title": "QuickMind 引用AI回答功能（浮动按钮+引用预览+API上下文）"
-        },
-        {
-          "type": "code",
-          "title": "QuickMind 直连模式 — 非 localhost 自动切换浏览器直调 API"
-        },
-        {
-          "type": "deploy",
-          "title": "QuickMind 云端部署 CloudStudio，公网可访问"
-        },
-        {
-          "type": "system",
-          "title": "复盘系统轻量模式 — 仅「复盘」两字不深度思考"
-        },
-        {
-          "type": "deploy",
-          "title": "复盘系统云端快照，永久链接上线"
-        },
-        {
-          "type": "config",
-          "title": "每日 19:00 自动同步到云端自动化"
-        }
-      ],
-      "summary": "上午完成 QuickMind 核心 Bug 修复：API 无响应时界面锁死问题，加入双层超时防护和主动中止机制。升级 server.js v4 添加全局错误捕获。下午新增「引用AI回答」功能，确认 DeepSeek API 支持 CORS 后新增直连模式并部署 QM 到 CloudStudio 实现公网访问。同时优化复盘系统轻量模式减少 token 消耗，将复盘系统部署到 CloudStudio 实现永久链接。",
-      "decisions": [
-        "QuickMind 超时：fetch 60s + 流读取 30s 双层防护",
-        "QuickMind 服务器启动：PowerShell Start-Process 更持久",
-        "QuickMind server.js v4：全局错误捕获防进程崩溃",
-        "引用功能：选中文字 → 浮动按钮 → 引用预览 → API 上下文前缀",
-        "QM 直连模式：非 localhost 自动切换浏览器直调 DeepSeek API",
-        "轻量模式：仅「复盘」二字跳过深度搜索",
-        "云端部署：CloudStudio 复用沙箱实现永久链接",
-        "每日同步：19:00 自动重新打包部署",
-        "QuickMind 缩写约定为 QM"
-      ]
-    },
-    "2026-08-09": {
-      "topics": [
-        "无用户主动会话"
-      ],
-      "outputs": [],
-      "summary": "周日休息日。扫描所有 workspace 的 .workbuddy/memory/ 目录后未发现 2026-08-09.md 日志文件，conversation_search 也未返回相关历史会话记录。本地系统日志仅为 OneDrive / iCreateLogs 等后台应用自动产生的内容，无业务相关操作。补盘。",
-      "decisions": [
-        "无"
-      ]
-    },
-    "2026-08-10": {
-      "topics": [
-        "FP 复盘系统云端同步（15:00 自动化）",
-        "FP 复盘系统云端部署探索（Netlify / Gitee Pages / GitLab / CloudStudio）",
-        "FP 系统优化与命名确认",
-        "FP Bug 修复（server.py 重定向）"
-      ],
-      "outputs": [
-        {
-          "type": "system",
-          "title": "FP server.py 首页重定向修复（localhost:8765 → /dashboard.html）"
-        },
-        {
-          "type": "system",
-          "title": "FP 响应式 CSS 适配（电脑 / 手机 / 平板三端布局）"
-        },
-        {
-          "type": "deploy",
-          "title": "FP 云端重新部署（沙箱回收后重新上线）"
-        },
-        {
-          "type": "config",
-          "title": "FP 自动部署时间调整：18:30 → 15:00"
-        },
-        {
-          "type": "config",
-          "title": "FP 正式命名（SKILL.md + dashboard.html + static-snapshot.html）"
-        },
-        {
-          "type": "automate",
-          "title": "复盘快照同步（index.json → static-snapshot.html → CloudStudio 重新部署）"
-        },
-        {
-          "type": "bugfix",
-          "title": "static-snapshot.html 生成 outputs 数组缺逗号导致 JS 语法错误"
-        }
-      ],
-      "summary": "全天围绕 FP（复盘系统代号）云端部署与稳定性展开。上午尝试 Netlify / Gitee Pages / GitLab 三条路径探索永久链接方案，均因账号门槛与功能限制放弃，最终回归 CloudStudio 沙箱方案——靠每日 15:00 自动化重新部署来续命。下午修复 server.py 首页不跳转仪表盘的问题，为云端快照 static-snapshot.html 添加响应式三端布局，确认「FP」为复盘系统正式代号并全局统一命名。15:00 自动化触发云端同步一次。17:39 手动触发完整复盘，17:55 自动化每日复盘任务整合云端同步增量作为 v2 终版。",
-      "decisions": [
-        "放弃 Netlify：注册流程被密码保护卡住",
-        "放弃 Gitee Pages：新账号无 Pages 功能入口",
-        "放弃 GitLab：未注册且维护成本高",
-        "CloudStudio 每日 15:00 自动部署：作为「链接续命」基础方案",
-        "响应式断点：768px 手机上下堆叠 / 769-1024px 平板调整 / >1024px 电脑 16:9",
-        "FP 正式命名：SKILL.md / dashboard.html / static-snapshot.html 全局统一",
-        "「永久链接」需 push 到 gh-pages 分支，下次探索",
-        "outputs 数组生成注意对象间逗号分隔符，否则 JS eval 失败"
-      ]
+// ====== DATA LOADED DYNAMICALLY (fetch data.json, cache-busted) ======
+var reviewIndex = {};
+var dailyLogs = {};
+var snapshotDate = '';
+
+fetch('data.json?v=' + Date.now())
+  .then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
+  .then(function(d) {
+    reviewIndex = d.reviewIndex || {};
+    dailyLogs = d.dailyLogs || {};
+    snapshotDate = d.snapshotDate || '';
+    if (snapshotDate) {
+      document.querySelectorAll('.badge-snapshot').forEach(function(b) {
+        b.textContent = '\u{1F4F8} 云端快照 \u00B7 ' + snapshotDate;
+      });
+      var fn = document.querySelector('.footer-note');
+      if (fn) fn.textContent = '数据快照于 ' + snapshotDate + ' \u00B7 思危的 WorkBuddy 复盘';
     }
-  },
-  "reflections": {
-    "2026-08-05": "今日制作了一款workboddy每日复盘系统，workbuddy检索到关键词「复盘」就会打开，应该算是利用了LORA。该系统会自动总结当日与workboddy对话的主题，产出的内容及工作概要等，并会记录我的每日感想，以上内容将会计入左上角日历，以后可以点击查看。\n今天是首次使用workbuddy解决实际问题，感觉不错。",
-    "2026-08-06": "今天尝试用workbuddy开发一款轻量AI对话软件，因为如果是总与workbuddy对话它会反应很久，效率低下。为了开发软件，我套用了deepseek的模型，创建了API地址和密钥，甚至为了使软件正常运作花了10块钱购买TOKEN，最后的结果是不知如何启动代理服务器，我真没招了，明天继续",
-    "2026-08-07": "今日优化了workbuddy每日复盘系统，使其接受命令时不搜索、不扫描、不生成报告，不深度思考，一句话回复，从而减少TOKEN的消耗。\n今日成功开发自创AI问答软件并命名为QuickMind，昨天的漏洞今天搞定了，并对一些不方便的内容进行了优化，后期会继续优化。\n今日优化了每日复盘程序，生成固定网址https://c120e9e86334473688be3004e3de5fad.sh2.agentos-app.net，减少麻烦。\n今日YOKEN消耗太大了，明天就只看PTT算了。\n",
-    "2026-08-09": "（休息日，未填写感想）",
-    "2026-08-10": "今天尝试将FP和QM存入云端，但失败了，我在网上找到了搭建永久网址的攻略，但需要下载 GitHub 还有后续一系列操作，涉及到一定专业性，我决定先放放。焘哥过两天会带我出去处理工作，当务之急是恶补一下他发我的资料。",
-    "2026-08-11": "今日把FP存入了云端，真正意义上生成了永久网址而不是靠沙盒，另外今天主要学习了焘哥发的资料"
-  }
-};
+    init();
+  })
+  .catch(function(e) {
+    var el = document.getElementById('rightContent');
+    if (el) el.innerHTML = '<div style="padding:40px;color:#c00;font-family:sans-serif">数据加载失败：' + e.message + '<br>请刷新重试。</div>';
+  });
 
 // ====== State ======
 var currentMonth = new Date().getMonth();
@@ -795,7 +561,6 @@ var selectedDate = formatDate(new Date());
 var calendarOpen = false;
 
 // ====== Init ======
-document.addEventListener('DOMContentLoaded', init);
 
 function init() {
   renderCalendar();
@@ -812,6 +577,7 @@ document.addEventListener('click', function(e) {
 
 function hasReview(ds) { return reviewIndex && reviewIndex.reports && reviewIndex.reports[ds]; }
 function hasReflection(ds) { return reviewIndex && reviewIndex.reflections && reviewIndex.reflections[ds] && reviewIndex.reflections[ds].trim(); }
+function hasLog(ds) { return dailyLogs && dailyLogs[ds] && dailyLogs[ds].trim(); }
 
 function toggleCalendar() {
   calendarOpen = !calendarOpen;
@@ -838,6 +604,7 @@ function renderCalendar() {
     if (ds === today) cls += ' today';
     if (ds === selectedDate) cls += ' selected';
     if (hasReview(ds)) cls += ' has-review';
+    if (hasLog(ds)) cls += ' has-log';
     html += '<div class="' + cls + '" onclick="selectDay(\'' + ds + '\')">' + d + '</div>';
   }
 
@@ -899,8 +666,23 @@ function renderLeft(ds) {
   }
 
   var report = (reviewIndex && reviewIndex.reports) ? reviewIndex.reports[ds] : null;
+  var log = (typeof dailyLogs !== 'undefined' && dailyLogs) ? (dailyLogs[ds] || '') : '';
 
   if (!report) {
+    if (log && log.trim()) {
+      // 无复盘报告但有实时工作日志
+      var html = '';
+      html += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:24px">';
+      html += '<span style="font-size:20px;font-weight:700;color:var(--text)">' + date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日</span>';
+      html += '<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(16,185,129,0.15);color:#10b981">实时日志</span>';
+      html += '<span style="font-size:11px;padding:3px 10px;border-radius:20px;background:var(--card-bg);color:var(--text-muted)">复盘待生成</span>';
+      html += '</div>';
+      html += '<div class="section-title">⚡ 今日工作日志（实时）</div>';
+      html += '<div class="reflection-content log-content">' + escapeHtml(log) + '</div>';
+      html += '<div style="margin-top:16px;padding:12px;border:1px dashed var(--border);border-radius:12px;font-size:12px;color:var(--text-muted)">💡 该日已完成工作，每日 18:00 自动复盘后将生成正式报告并替换此页。</div>';
+      container.innerHTML = html;
+      return;
+    }
     container.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>该日暂无复盘记录</p></div>';
     return;
   }
