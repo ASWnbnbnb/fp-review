@@ -2,7 +2,7 @@
   "reviewIndex": {
     "version": "1.0",
     "created": "2026-08-05",
-    "lastReview": "2026-08-20",
+    "lastReview": "2026-08-21",
     "reports": {
       "2026-08-19": {
         "topics": [
@@ -46,6 +46,31 @@
         "decisions": [
           "昨日 08-19 自动补盘：单独生成报告而非跳过，保证日历视图完整",
           "同步脚本静默执行：CHANGED 才部署，NOCHANGE 跳过节省云端开销",
+          "双链同步策略持续：CloudStudio 沙箱 + GitHub Pages 永久链接并行"
+        ]
+      },
+      "2026-08-21": {
+        "topics": [
+          "每日复盘自动化触发执行",
+          "FP 复盘系统例行同步补盘"
+        ],
+        "outputs": [
+          {
+            "type": "system",
+            "title": "2026-08-21 每日复盘自动化执行"
+          },
+          {
+            "type": "system",
+            "title": "index.json 更新：新增 2026-08-21 条目，lastReview=2026-08-21"
+          },
+          {
+            "type": "deploy",
+            "title": "同步脚本 sync.py 执行 + 双链部署（CloudStudio + GitHub Pages）"
+          }
+        ],
+        "summary": "周五无用户主动工作会话。扫描所有 workspace 的 .workbuddy/memory/ 目录后未发现 2026-08-21.md 日志文件，conversation_search 工具在当前环境不可用。FP 复盘系统按 17:50 自动化既定节奏执行每日完整复盘流程：扫描 8 个 workspace memory 目录 -> 确认昨日 08-20 报告已存在无需补盘 -> 生成 08-21 报告 -> 更新 index.json 中 lastReview 至 2026-08-21 -> 运行 sync.py 重构数据 -> 双链部署。当前报告总数升至 18 份（自 2026-08-03 起）。",
+        "decisions": [
+          "今日无用户业务关键决策",
           "双链同步策略持续：CloudStudio 沙箱 + GitHub Pages 永久链接并行"
         ]
       },
