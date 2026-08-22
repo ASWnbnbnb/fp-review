@@ -2,7 +2,7 @@
   "reviewIndex": {
     "version": "1.0",
     "created": "2026-08-05",
-    "lastReview": "2026-08-21",
+    "lastReview": "2026-08-22",
     "reports": {
       "2026-08-19": {
         "topics": [
@@ -556,6 +556,27 @@
           "FP 正式命名：SKILL.md / dashboard.html / static-snapshot.html 全局统一",
           "「永久链接」需 push 到 gh-pages 分支，下次探索",
           "outputs 数组生成注意对象间逗号分隔符，否则 JS eval 失败"
+        ]
+      },
+      "2026-08-22": {
+        "topics": [
+          "休息日（周六，无工作会话）",
+          "FP 复盘系统每日自动化执行"
+        ],
+        "outputs": [
+          {
+            "type": "system",
+            "title": "2026-08-22 每日复盘自动化补盘"
+          },
+          {
+            "type": "system",
+            "title": "index.json 更新：新增 2026-08-22 条目，lastReview=2026-08-22"
+          }
+        ],
+        "summary": "周六休息日。扫描所有 workspace 的 .workbuddy/memory/ 目录后未发现 2026-08-22.md 日志文件，conversation_search 也未返回当日用户主动对话记录。FP 复盘系统按 17:50 自动化既定节奏完成补盘，生成当日报告并更新索引。报告总数 19 份（自 2026-08-03 起）。",
+        "decisions": [
+          "无用户业务关键决策（休息日）",
+          "双链同步策略持续：CloudStudio 沙箱 + GitHub Pages 永久链接并行"
         ]
       }
     },
